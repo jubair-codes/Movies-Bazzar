@@ -1,0 +1,15 @@
+.search-results {
+    padding: 20px;
+  }
+  
+  .no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }

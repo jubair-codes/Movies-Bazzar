@@ -3,24 +3,28 @@ import '../css/MovieCard.css';
 
 const MovieCard = (props) => {
 
-    const { title, release_date, url } = props.movie;
-    const onFavoriteClick = () => {
-        alert('Added to favorites!');
-    }
+    const { title, release_date, poster_path } = props.movie;
 
     return (
         <div className='movie-card'>
             <div className="movie-poster">
-                <img src={url} alt={title} className='poster-cover'/>
+                <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={title} className='poster-cover' />
             </div>
-            <div className="movie-overlay">
-                <button className="fav-btn" onClick={onFavoriteClick}>
-                    🤍
-                </button>
-            </div>
+            {
+                props.favoriteBtn ? (
+                    <div className="movie-overlay">
+                        <button className="favorite-btn" onClick={() => { props.onFavoriteClick(props.movie) }}>
+                            🤍
+                        </button>
+                    </div>
+                ) : (
+                    <></>
+                )
+            }
+
             <div className="movie-info">
                 <h3>{title}</h3>
-                <p>{release_date}</p>
+                <p>{release_date?.split("-")[0]}</p>
             </div>
         </div>
     );
